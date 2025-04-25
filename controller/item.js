@@ -1,0 +1,14 @@
+const Product = require('../models/product');
+ exports.addItem = (req, res, next)=>{
+    const name = req.body.name
+    const price = req.body.price
+    Product.create({
+        name: name,
+        price: price
+    }).then(result => {
+        res.status(201).json({ message: 'Item added', product: result });
+    }).catch(err => {
+        console.error(err);
+        res.status(500).json({ error: 'Failed to add item' });
+    });
+ }
