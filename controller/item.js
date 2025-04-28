@@ -27,3 +27,19 @@ exports.getItemById = (req, res, next)=>{
         res.status(201).json({message:"Item", product: result});
     }).catch(console.log('err'));
 }
+
+exports.editItem = (req, res, next)=>{
+    itemId = req.params.itemId;
+    updatedName = req.body.name;
+    updatedPrice = req.body.price;
+    Product.findByPk(itemId).then(item=>{
+        item.name = updatedName;
+        item.price = updatedPrice;
+        return item.save();
+    }).then(result=>{
+        console.log('updates');
+        res.status(201).json({message:"success",product: result});
+    }).catch(err=>{
+        console.log(err)
+    })
+}

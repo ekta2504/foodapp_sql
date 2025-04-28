@@ -8,4 +8,6 @@ route.get('/getItem', items.getItem);
 
 route.get('/getItem/:itemId', items.getItemById);
 
+route.post('/editItem/:itemId', items.editItem);
+
 module.exports = route;
