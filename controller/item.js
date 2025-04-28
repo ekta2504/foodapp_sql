@@ -12,3 +12,10 @@ const Product = require('../models/product');
         res.status(500).json({ error: 'Failed to add item' });
     });
  }
+
+ exports.getItem = (req, res, next)=>{
+    Product.findAll().then(result=>{
+        console.log('success')
+        res.status(201).json({ message: 'Items fetched', product: result });
+    }).catch(console.log('err'));
+}
