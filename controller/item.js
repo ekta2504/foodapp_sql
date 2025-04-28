@@ -19,3 +19,11 @@ const Product = require('../models/product');
         res.status(201).json({ message: 'Items fetched', product: result });
     }).catch(console.log('err'));
 }
+
+exports.getItemById = (req, res, next)=>{
+    itemId = req.params.itemId
+    Product.findByPk(itemId).then(result=>{
+        console.log('success')
+        res.status(201).json({message:"Item", product: result});
+    }).catch(console.log('err'));
+}
