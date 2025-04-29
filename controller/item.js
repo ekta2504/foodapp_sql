@@ -43,3 +43,16 @@ exports.editItem = (req, res, next)=>{
         console.log(err)
     })
 }
+
+exports.deleteItem = (req, res, next)=>{
+    itemId = req.params.itemId;
+    Product.findByPk(itemId).then(item=>{
+        return item.destroy().then(result=>{
+            res.status(201).json({message: "delete succesfull"});
+        }).catch(err=>{
+            console.log(err);
+        })
+    }).catch(err=>{
+        console.log(err);
+    });
+}

@@ -10,4 +10,6 @@ route.get('/getItem/:itemId', items.getItemById);
 
 route.post('/editItem/:itemId', items.editItem);
 
+route.delete('/deleteItem/:itemId', items.deleteItem);
+
 module.exports = route;
